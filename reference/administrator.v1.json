@@ -9,5 +9,100 @@
       "url": "http://localhost:3000"
     }
   ],
-  "paths": {}
+  "paths": {},
+  "components": {
+    "schemas": {
+      "Administrator": {
+        "title": "Administrator",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "accountTypeID": {
+            "type": "string"
+          },
+          "accountStateID": {
+            "type": "string"
+          },
+          "producerID": {
+            "type": "integer"
+          },
+          "email_verified_at": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "created_date": {
+            "type": "string"
+          },
+          "updated_date": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "email",
+          "accountTypeID",
+          "accountStateID",
+          "producerID",
+          "password",
+          "created_date",
+          "updated_date"
+        ],
+        "x-tags": [
+          "Model"
+        ]
+      },
+      "state": {
+        "title": "account_states",
+        "type": "object",
+        "properties": {
+          "accountStateID": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "accountStateID",
+          "description"
+        ],
+        "x-tags": [
+          "Model"
+        ]
+      },
+      "account_types": {
+        "title": "account_types",
+        "type": "object",
+        "properties": {
+          "accountTypeID": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "accountTypeID",
+          "description"
+        ],
+        "x-tags": [
+          "Model"
+        ]
+      }
+    }
+  }
 }

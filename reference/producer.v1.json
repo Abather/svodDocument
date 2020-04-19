@@ -1,0 +1,52 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "producer",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {},
+  "components": {
+    "schemas": {
+      "producer": {
+        "title": "producer",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "nickname": {
+            "type": "string"
+          },
+          "accountStateID": {
+            "type": "string"
+          },
+          "created_date": {
+            "type": "string"
+          },
+          "update_date": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "nickname",
+          "accountStateID",
+          "created_date",
+          "update_date"
+        ],
+        "x-tags": [
+          "Model"
+        ]
+      }
+    }
+  }
+}
