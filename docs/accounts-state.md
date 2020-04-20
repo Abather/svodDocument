@@ -1,9 +1,7 @@
-#accounts-state
 ---
 tags: [Model Description]
 ---
-
-**Accounts States**
+# **Accounts States**
 
 There are many account states which will defind the acount state as follow:
 

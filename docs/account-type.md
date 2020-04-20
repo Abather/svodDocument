@@ -1,7 +1,7 @@
 ---
 tags: [Model Description]
 ---
-**Account Types**
+# **Account Types**
 
 It specifie the administrator role and it is as the following:
 
@@ -16,6 +16,9 @@ AccountID | description | note
 
 
  **1- SUPERADMIN:**
+- Create new producers.
+- In addition to the **ADMIN** privileges.
+
 
  **2- ADMIN:**
 
