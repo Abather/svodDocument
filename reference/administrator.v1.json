@@ -6,10 +6,42 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000"
+      "url": "http://127.0.0.1:8000/api/adminstrator"
     }
   ],
-  "paths": {},
+  "paths": {
+    "/login": {
+      "post": {
+        "summary": "",
+        "operationId": "post-login",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "API"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "passowrd": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
   "components": {
     "schemas": {
       "Administrator": {

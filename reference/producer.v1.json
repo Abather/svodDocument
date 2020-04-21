@@ -6,10 +6,328 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000"
+      "url": "http://127.0.0.1:8000/api/producer"
     }
   ],
-  "paths": {},
+  "paths": {
+    "/insert": {
+      "post": {
+        "summary": "New Producer",
+        "operationId": "post-insert",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "nickname": {
+                      "type": "string"
+                    },
+                    "logo": {
+                      "type": "string"
+                    },
+                    "created_date": {
+                      "type": "string"
+                    },
+                    "updated_date": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity (WebDAV)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "errors": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "API"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "description": "",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "nickname": {
+                    "type": "string"
+                  },
+                  "logo": {
+                    "type": "string",
+                    "description": "file"
+                  }
+                },
+                "required": [
+                  "name",
+                  "nickname"
+                ]
+              }
+            }
+          },
+          "description": ""
+        }
+      }
+    },
+    "/update": {
+      "post": {
+        "summary": "Update Producer",
+        "operationId": "post-update",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "API"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "nickname": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "nickname"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/delete/{producerID}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "producerID",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "delete": {
+        "summary": "Delete Producer",
+        "operationId": "delete-delete-producerID",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "API"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization"
+          }
+        ]
+      }
+    },
+    "/{producerID}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "producerID",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get Producer Data",
+        "tags": [
+          "API"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "nickname": {
+                      "type": "string"
+                    },
+                    "logo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-producerID"
+      }
+    },
+    "/all": {
+      "get": {
+        "summary": "Get All Producers",
+        "tags": [
+          "API"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "current_page": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "producerID": {
+                            "type": "integer"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "nickname": {
+                            "type": "string"
+                          },
+                          "logo": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "first_page_url": {
+                      "type": "string"
+                    },
+                    "from": {
+                      "type": "integer"
+                    },
+                    "last_page": {
+                      "type": "integer"
+                    },
+                    "last_page_url": {
+                      "type": "string"
+                    },
+                    "next_page_url": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string"
+                    },
+                    "per_page": {
+                      "type": "integer"
+                    },
+                    "prev_page_url": {
+                      "type": "string"
+                    },
+                    "to": {
+                      "type": "integer"
+                    },
+                    "total": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-all",
+        "description": ""
+      }
+    }
+  },
   "components": {
     "schemas": {
       "producer": {
