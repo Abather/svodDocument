@@ -349,13 +349,16 @@
           "accountStateID": {
             "type": "string"
           },
-          "created_date": {
+          "created_at": {
             "type": "string"
           },
-          "update_date": {
+          "update_at": {
             "type": "string"
           },
           "logo": {
+            "type": "string"
+          },
+          "deleted_at": {
             "type": "string"
           }
         },
@@ -364,8 +367,8 @@
           "name",
           "nickname",
           "accountStateID",
-          "created_date",
-          "update_date"
+          "created_at",
+          "update_at"
         ]
       }
     }
