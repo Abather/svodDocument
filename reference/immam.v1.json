@@ -1,0 +1,244 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "immam",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api/immam"
+    }
+  ],
+  "paths": {
+    "/all": {
+      "get": {
+        "summary": "Get All Immam",
+        "tags": [
+          "API"
+        ],
+        "responses": {},
+        "operationId": "get-all",
+        "description": ""
+      }
+    },
+    "/{immamID}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "immamID",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Show Immam",
+        "tags": [
+          "API"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "operationId": "get-immamID"
+      }
+    },
+    "/insert": {
+      "post": {
+        "summary": "New Immam",
+        "operationId": "post-insert",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "304": {
+            "description": "Not Modified"
+          },
+          "422": {
+            "description": "Unprocessable Entity (WebDAV)"
+          }
+        },
+        "tags": [
+          "API"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "required": true,
+            "name": "Authorization"
+          }
+        ],
+        "description": "",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "prefix": {
+                    "type": "string"
+                  },
+                  "suffix": {
+                    "type": "string"
+                  },
+                  "koniah": {
+                    "type": "string"
+                  },
+                  "nickname": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/update": {
+      "post": {
+        "summary": "Update Immam Data",
+        "operationId": "post-update",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "422": {
+            "description": "Unprocessable Entity (WebDAV)"
+          }
+        },
+        "tags": [
+          "API"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "required": true,
+            "name": "Authorization"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "prefix": {
+                    "type": "string"
+                  },
+                  "suffix": {
+                    "type": "string"
+                  },
+                  "immamID": {
+                    "type": "string"
+                  },
+                  "koniah": {
+                    "type": "string"
+                  },
+                  "nickname": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "prefix",
+                  "suffix",
+                  "immamID"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/delete/{immamID}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "immamID",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "delete": {
+        "summary": "Delete Immam",
+        "operationId": "delete-delete-immamID",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "304": {
+            "description": "Not Modified"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          }
+        ],
+        "tags": [
+          "API"
+        ],
+        "description": ""
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "immam": {
+        "title": "immam",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "suffix": {
+            "type": "string"
+          },
+          "nickname": {
+            "type": "string"
+          },
+          "koniah": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "prefix": {
+            "type": "string"
+          }
+        },
+        "x-tags": [
+          "Model"
+        ]
+      }
+    }
+  }
+}

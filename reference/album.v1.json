@@ -1,0 +1,343 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "album",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:8000/api/albums"
+    }
+  ],
+  "paths": {
+    "/insert": {
+      "post": {
+        "summary": "New Album",
+        "operationId": "post-insert",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "422": {
+            "description": "Unprocessable Entity (WebDAV)"
+          }
+        },
+        "tags": [
+          "API"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "cover": {
+                    "type": "string"
+                  },
+                  "albumTypeID": {
+                    "type": "string"
+                  },
+                  "producerID": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "title",
+                  "cover",
+                  "albumTypeID",
+                  "producerID"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/publish/{albumID}": {
+      "post": {
+        "summary": "Publish Album",
+        "operationId": "post-publish",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "304": {
+            "description": "Not Modified"
+          }
+        },
+        "tags": [
+          "API"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "albumID",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/delete/{albumID}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "albumID",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "delete": {
+        "summary": "Delete Album",
+        "operationId": "delete-delete-albumID",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "304": {
+            "description": "Not Modified"
+          }
+        },
+        "tags": [
+          "API"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization"
+          }
+        ]
+      }
+    },
+    "/all": {
+      "get": {
+        "summary": "Get All Albums",
+        "tags": [
+          "API"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "total": {
+                      "type": "integer"
+                    },
+                    "to": {
+                      "type": "integer"
+                    },
+                    "prev_page_url": {
+                      "type": "string"
+                    },
+                    "per_page": {
+                      "type": "integer"
+                    },
+                    "path": {
+                      "type": "string"
+                    },
+                    "next_page_url": {
+                      "type": "string"
+                    },
+                    "last_page_url": {
+                      "type": "string"
+                    },
+                    "last_page": {
+                      "type": "integer"
+                    },
+                    "from": {
+                      "type": "integer"
+                    },
+                    "first_page_url": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "cover": {
+                            "type": "string"
+                          },
+                          "albumTypeID": {
+                            "type": "integer"
+                          },
+                          "producerID": {
+                            "type": "integer"
+                          },
+                          "published_at": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "current_page": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-all",
+        "description": ""
+      }
+    },
+    "/{albumID}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "albumID",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Show Album",
+        "tags": [
+          "API"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "cover": {
+                      "type": "string"
+                    },
+                    "albumTypeID": {
+                      "type": "string"
+                    },
+                    "producerID": {
+                      "type": "string"
+                    },
+                    "published_at": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-albumID",
+        "parameters": []
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "albumsTypes": {
+        "title": "albumsTypes",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "description"
+        ],
+        "x-tags": [
+          "Model"
+        ]
+      },
+      "albums": {
+        "title": "albums",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "title": {
+            "type": "string"
+          },
+          "cover": {
+            "type": "string"
+          },
+          "producerID": {
+            "type": "integer"
+          },
+          "pudlished_at": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "cover",
+          "producerID",
+          "created_at",
+          "updated_at"
+        ],
+        "x-tags": [
+          "Model"
+        ]
+      }
+    }
+  }
+}

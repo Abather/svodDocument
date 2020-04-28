@@ -1,0 +1,551 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "radoud",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:8000/api/radoud"
+    }
+  ],
+  "paths": {
+    "/insert": {
+      "post": {
+        "summary": "New Radoud",
+        "operationId": "post-insert",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "nickName": {
+                      "type": "string"
+                    },
+                    "firstName": {
+                      "type": "string"
+                    },
+                    "fatherName": {
+                      "type": "string"
+                    },
+                    "familyName": {
+                      "type": "string"
+                    },
+                    "pageCover": {
+                      "type": "string"
+                    },
+                    "avatar": {
+                      "type": "string"
+                    },
+                    "radoudPrefixID": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {}
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not Modified"
+          },
+          "422": {
+            "description": "Unprocessable Entity (WebDAV)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "errors": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "API"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nickName": {
+                    "type": "string"
+                  },
+                  "firstName": {
+                    "type": "string"
+                  },
+                  "fatherName": {
+                    "type": "string"
+                  },
+                  "familyName": {
+                    "type": "string"
+                  },
+                  "radoudPrefixID": {
+                    "type": "string"
+                  },
+                  "birthdate": {
+                    "type": "string"
+                  },
+                  "pageCover": {
+                    "type": "string"
+                  },
+                  "avatar": {
+                    "type": "string"
+                  },
+                  "country": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "nickName",
+                  "firstName",
+                  "familyName",
+                  "radoudPrefixID"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/delete/{radoudID}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "radoudID",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "delete": {
+        "summary": "Delete Radoud",
+        "operationId": "delete-delete-radoudID",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "API"
+        ]
+      }
+    },
+    "/updatepagecover": {
+      "post": {
+        "summary": "Update Page Cover",
+        "operationId": "post-updatepagecover",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "304": {
+            "description": "Not Modified"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "422": {
+            "description": "Unprocessable Entity (WebDAV)"
+          }
+        },
+        "tags": [
+          "API"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nickName": {
+                    "type": "string"
+                  },
+                  "pageCover": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "nickName",
+                  "pageCover"
+                ]
+              }
+            }
+          },
+          "description": ""
+        }
+      }
+    },
+    "/updateavatar": {
+      "post": {
+        "summary": "Update Avatar",
+        "operationId": "post-updateavatar",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "304": {
+            "description": "Not Modified"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "422": {
+            "description": "Unprocessable Entity (WebDAV)"
+          }
+        },
+        "tags": [
+          "API"
+        ],
+        "description": "",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nickName": {
+                    "type": "string"
+                  },
+                  "avatar": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "nickName",
+                  "avatar"
+                ]
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "required": true,
+            "name": "Authorization"
+          }
+        ]
+      }
+    },
+    "/update": {
+      "post": {
+        "summary": "Update Radoud Data",
+        "operationId": "post-update",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "304": {
+            "description": "Not Modified"
+          }
+        },
+        "tags": [
+          "API"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nickName": {
+                    "type": "string"
+                  },
+                  "firstName": {
+                    "type": "string"
+                  },
+                  "fatherName": {
+                    "type": "string"
+                  },
+                  "familyName": {
+                    "type": "string"
+                  },
+                  "radoudPrefixID": {
+                    "type": "string"
+                  },
+                  "birthdate": {
+                    "type": "string"
+                  },
+                  "country": {
+                    "type": "string"
+                  },
+                  "pageCover": {
+                    "type": "string"
+                  },
+                  "avatar": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "nickName",
+                  "firstName",
+                  "familyName",
+                  "radoudPrefixID"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{radoudID}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "radoudID",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get Radoud Data",
+        "tags": [
+          "API"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "nickName": {
+                      "type": "string"
+                    },
+                    "fullName": {
+                      "type": "string"
+                    },
+                    "pageCover": {
+                      "type": "string"
+                    },
+                    "avatar": {
+                      "type": "string"
+                    },
+                    "birthdate": {
+                      "type": "string"
+                    },
+                    "country": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "operationId": "get-radoudID",
+        "description": ""
+      }
+    },
+    "/all": {
+      "get": {
+        "summary": "Get All Radouds",
+        "tags": [
+          "API"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "total": {
+                      "type": "integer"
+                    },
+                    "to": {
+                      "type": "integer"
+                    },
+                    "prev_page_url": {
+                      "type": "string"
+                    },
+                    "per_page": {
+                      "type": "integer"
+                    },
+                    "path": {
+                      "type": "string"
+                    },
+                    "next_page_url": {
+                      "type": "string"
+                    },
+                    "last_page_url": {
+                      "type": "string"
+                    },
+                    "last_page": {
+                      "type": "integer"
+                    },
+                    "from": {
+                      "type": "integer"
+                    },
+                    "first_page_url": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "nickName": {
+                            "type": "integer"
+                          },
+                          "fullName": {
+                            "type": "string"
+                          },
+                          "avatar": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "current_page": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-all"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "radoudPrefix": {
+        "title": "radoudPrefix",
+        "type": "object",
+        "x-tags": [
+          "Model"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "description"
+        ]
+      },
+      "radoud": {
+        "title": "radoud",
+        "type": "object",
+        "properties": {
+          "nickName": {
+            "type": "string"
+          },
+          "radoudPrefixID": {
+            "type": "boolean"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "fatherName": {
+            "type": "string"
+          },
+          "familyName": {
+            "type": "string"
+          },
+          "birthdate": {
+            "type": "string"
+          },
+          "pageCover": {
+            "type": "string"
+          },
+          "avatar": {
+            "type": "string"
+          },
+          "deleted_at": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "nickName",
+          "radoudPrefixID",
+          "firstName",
+          "familyName",
+          "created_at"
+        ],
+        "x-tags": [
+          "Model"
+        ],
+        "description": ""
+      }
+    }
+  }
+}

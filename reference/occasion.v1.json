@@ -1,0 +1,266 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "occasion",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api/occasion"
+    }
+  ],
+  "paths": {
+    "/insert": {
+      "post": {
+        "summary": "New Occasion",
+        "operationId": "post-insert",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "304": {
+            "description": "Not Modified"
+          },
+          "422": {
+            "description": "Unprocessable Entity (WebDAV)"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          }
+        ],
+        "tags": [
+          "API"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  },
+                  "typeID": {
+                    "type": "string"
+                  },
+                  "hijridate": {
+                    "type": "string"
+                  },
+                  "immamID": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "description",
+                  "typeID"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/all": {
+      "get": {
+        "summary": "Get All Occasions",
+        "tags": [
+          "API"
+        ],
+        "responses": {},
+        "operationId": "get-all"
+      },
+      "post": {
+        "summary": "Get All Occasions (Filtered)",
+        "operationId": "post-all",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "immamID": {
+                    "type": "string"
+                  },
+                  "typeID": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{occasionID}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "occasionID",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Show Occasion",
+        "tags": [
+          "API"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "operationId": "get-occasionID",
+        "description": ""
+      }
+    },
+    "/update": {
+      "post": {
+        "summary": "Update Occasion",
+        "operationId": "post-update",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "422": {
+            "description": "Unprocessable Entity (WebDAV)"
+          }
+        },
+        "tags": [
+          "API"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  },
+                  "typeID": {
+                    "type": "string"
+                  },
+                  "hijridate": {
+                    "type": "string"
+                  },
+                  "immamID": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "description",
+                  "typeID"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/delete/{occasionID}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "occasionID",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "delete": {
+        "summary": "Delete Occasion",
+        "operationId": "delete-delete-occasionID",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "304": {
+            "description": "Not Modified"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "tags": [
+          "API"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "occasion": {
+        "title": "occasion",
+        "type": "object",
+        "x-tags": [
+          "Model"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "hijridate": {
+            "type": "string"
+          },
+          "typeID": {
+            "type": "string"
+          },
+          "immamID": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "description",
+          "hijridate",
+          "typeID",
+          "immamID"
+        ]
+      }
+    }
+  }
+}
